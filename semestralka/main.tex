@@ -1,0 +1,62 @@
+\documentclass[a4paper,12pt,twoside]{article}
+
+\usepackage[czech]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[%showframe,
+            top=3cm,bottom=5cm,
+            inner=2.5cm,outer=3.5cm]{geometry} 
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    %\addtocounter{page}{-1}%
+    \newpage}
+    
+\begin{document}
+
+\include{title}
+\afterpage{\blankpage}
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+\include{pronouncement}
+\afterpage{\blankpage}
+
+\include{acknowledgment}
+\afterpage{\blankpage}
+
+\include{abstract}
+\afterpage{\blankpage}
+
+\fancyhf{}
+\pagestyle{fancy}
+\fancyfoot[CO,CE]{\thepage}
+\include{toc}
+\afterpage{\blankpage}
+
+\pagenumbering{arabic}
+\fancyhf{}
+\pagestyle{fancy}
+\fancyfoot[LO,RE]{\thepage}
+\fancyhead[LO,RE]{\leftmark}
+\include{s1}
+
+\fancyhf{}
+\fancyfoot[LO,RE]{\thepage}
+
+\bibliographystyle{unsrt}
+\addcontentsline{toc}{section}{Reference}
+\bibliography{references}
+\newpage
+
+\listoffigures
+\newpage
+
+\listoftables
+\newpage
+
+\end{document}  
