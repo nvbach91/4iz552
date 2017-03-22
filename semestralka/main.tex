@@ -1,61 +1,74 @@
-\documentclass[a4paper,12pt,twoside]{article}
+%% Zpracujte dokument na libovolné téma s respektováním dále uvedených požadavků:
+% 1. Povinné části dokumentu: titulní strana (vlastní úprava), obsah, text, seznam použitých pramenů, rejstřík.
+% 2. Práce s použitými prameny bude založena na samostatné bibliografické databázi.
+% 3. V dokumentu bude použita plovoucí grafika/tabulka.
+%% 4. V cílově generovaném PDF budou záložky (bookmarks).
+%% 5. Rozvržení stran bude navrženo pro oboustranný tisk. Doporučené velikosti okrajů: vnitřní 20mm, horní 30mm, vnější 40mm a dolní 50mm. Pro nastavení okrajů lze s výhodou použít balíček geometry.
+%% 6. Do horního záhlaví umisťujte vždy název aktuálně nejvyššího nadpisu tak, aby byl zarovnán k vnějšímu okraji. Číslo strany umisťujte do paty strany tak, aby bylo zarovnáno na vnější okraj. Pro úpravu obsahu záhlaví a zápatí lze doporučit balíček fancyhdr.
+% 7. Dokument musí být obsahově soudržný.
+
+% Do odevzdávárny vložte kompletní sadu souborů tvořících logicky daný dokument - včetně vygenerovaného výsledku.
+
+\documentclass[a4paper,11pt,twoside]{article}
 
 \usepackage[czech]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+\usepackage[unicode,hidelinks]{hyperref}
+%\usepackage[hidelinks]{hyperref}
 \usepackage[%showframe,
+            headheight=14pt,
             top=3cm,bottom=5cm,
-            inner=2.5cm,outer=3.5cm]{geometry} 
+            inner=4cm,outer=2cm]{geometry} 
 \usepackage{fancyhdr}
 \usepackage{lipsum}
-\usepackage{afterpage}
+\usepackage{bookmark}
+\usepackage{setspace}
+\usepackage{amsmath}
 
-\newcommand\blankpage{%
+\newcommand\blankpage{
     \null
-    \thispagestyle{empty}%
-    %\addtocounter{page}{-1}%
-    \newpage}
+    \thispagestyle{empty}
+    \newpage
+}
     
+\onehalfspacing
 \begin{document}
-
 \include{title}
-\afterpage{\blankpage}
-
+\blankpage
+%\pagenumbering{gobble}
+%\include{pronouncement} \blankpage
+%\include{acknowledgment} \blankpage
 \pagenumbering{roman}
-\setcounter{page}{1}
-\include{pronouncement}
-\afterpage{\blankpage}
-
-\include{acknowledgment}
-\afterpage{\blankpage}
-
-\include{abstract}
-\afterpage{\blankpage}
+%\setcounter{page}{7}
+\setcounter{page}{3}
+%\include{abstract} \blankpage
 
 \fancyhf{}
 \pagestyle{fancy}
 \fancyfoot[CO,CE]{\thepage}
 \include{toc}
-\afterpage{\blankpage}
+\blankpage
 
-\pagenumbering{arabic}
 \fancyhf{}
 \pagestyle{fancy}
-\fancyfoot[LO,RE]{\thepage}
-\fancyhead[LO,RE]{\leftmark}
+\fancyfoot[RO,LE]{\thepage}
+\fancyhead[RO,LE]{\leftmark}
+\pagenumbering{arabic}
 \include{s1}
 
 \fancyhf{}
 \fancyfoot[LO,RE]{\thepage}
 
-\bibliographystyle{unsrt}
-\addcontentsline{toc}{section}{Reference}
 \bibliography{references}
+\bibliographystyle{ieeetr}
+\addcontentsline{toc}{section}{Reference}
 \newpage
 
+\addcontentsline{toc}{section}{Seznam obrázků}
 \listoffigures
 \newpage
 
+\addcontentsline{toc}{section}{Seznam tabulek}
 \listoftables
 \newpage
 
