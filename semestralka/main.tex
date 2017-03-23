@@ -13,26 +13,30 @@
 
 \usepackage[czech]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[unicode,hidelinks]{hyperref}
+\usepackage[unicode,
+%            hidelinks
+]{hyperref}
 %\usepackage[hidelinks]{hyperref}
 \usepackage[%showframe,
             headheight=14pt,
-            top=3cm,bottom=5cm,
-            inner=4cm,outer=2cm]{geometry} 
+            top=3cm,bottom=4.5cm,
+            inner=4cm,outer=2cm]{geometry}
+\usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{lipsum}
 \usepackage{bookmark}
 \usepackage{setspace}
 \usepackage{amsmath}
+\usepackage{pgfplots}
 
 \newcommand\blankpage{
     \null
     \thispagestyle{empty}
     \newpage
 }
-    
 \onehalfspacing
 \begin{document}
+\def\arraystretch{1.3}
 \include{title}
 \blankpage
 %\pagenumbering{gobble}
@@ -66,7 +70,6 @@
 
 \addcontentsline{toc}{section}{Seznam obrázků}
 \listoffigures
-\newpage
 
 \addcontentsline{toc}{section}{Seznam tabulek}
 \listoftables
