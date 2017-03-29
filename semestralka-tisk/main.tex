@@ -12,13 +12,13 @@
 \documentclass[a4paper,11pt,twoside]{article}
 
 \usepackage[czech]{babel}
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{czech}
 \usepackage[utf8]{inputenc}
-\usepackage[unicode,
-%            hidelinks
-]{hyperref}
-%\usepackage[hidelinks]{hyperref}
+\usepackage[%hidelinks,
+            unicode]{hyperref}
 \usepackage[%showframe,
-            headheight=14pt,
+            headheight=14.6pt,
             top=3cm,bottom=4.5cm,
             inner=4cm,outer=2cm]{geometry}
 \usepackage{graphicx}
@@ -28,6 +28,11 @@
 \usepackage{setspace}
 \usepackage{amsmath}
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.12}
+
+\usepackage{makeidx}
+
+\makeindex
 
 \newcommand\blankpage{
     \null
@@ -60,11 +65,11 @@
 \pagenumbering{arabic}
 \include{s1}
 
-\fancyhf{}
-\fancyfoot[LO,RE]{\thepage}
 
+\fancyhf{}
+\pagestyle{fancy}
 \bibliography{references}
-\bibliographystyle{ieeetr}
+\bibliographystyle{babplain}
 \addcontentsline{toc}{section}{Reference}
 \newpage
 
@@ -73,6 +78,16 @@
 
 \addcontentsline{toc}{section}{Seznam tabulek}
 \listoftables
+\newpage
+
+% the following 3 lines set the index page's format to fancy
+% otherwise this page would have plain style
+\makeatletter
+\let\ps@plain\ps@fancy
+\makeatother
+\addcontentsline{toc}{section}{Rejstřík}
+\printindex
+
 \newpage
 
 \end{document}  
