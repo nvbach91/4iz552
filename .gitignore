@@ -123,7 +123,7 @@ acs-*.bib
 # makeidx
 *.idx
 *.ilg
-*.ind
+#*.ind
 *.ist
 
 # minitoc
